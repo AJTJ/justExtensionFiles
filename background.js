@@ -1394,7 +1394,7 @@
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 		var action = arguments[1];
 
-		console.log('count reducer triggered');
+		// console.log('count reducer triggered')
 		switch (action.type) {
 			case 'ADD_COUNT':
 				return state + (action.payload || 1);
@@ -1438,8 +1438,7 @@
 	  error: null,
 	  countries: [],
 	  selectedCountryIndex: null,
-	  options: [],
-	  cancelling: false
+	  options: []
 	};
 
 	var _default = function _default() {
@@ -4151,14 +4150,17 @@
 	var LOGGING_IN = 'LOGGING_IN';
 	var CANCEL_LOGIN = 'CANCEL_LOGIN';
 
+	var timer = null;
 	//here the login attempt is begun
 	var loginAttempt = function loginAttempt(data) {
-	  console.log('the login attempt data', data);
-	  return function (dispatch) {
-	    dispatch(beginLogin());
-	    setTimeout(function () {
-	      dispatch(checkLogin(data));
-	    }, 3000);
+	  return !data ? console.log('no data') : function (dispatch) {
+	    dispatch(checkLogin(data));
+	  };
+	};
+
+	var cancelLogin = function cancelLogin() {
+	  return {
+	    type: CANCEL_LOGIN
 	  };
 	};
 
@@ -4198,8 +4200,10 @@
 	};
 
 	var _default = {
+	  CANCEL_LOGIN: cancelLogin,
 	  LOGIN_ATTEMPT: loginAttempt,
-	  LOG_OUT: logOut
+	  LOG_OUT: logOut,
+	  LOGGING_IN: beginLogin
 	};
 	exports.default = _default;
 	;
@@ -4221,7 +4225,11 @@
 
 	  __REACT_HOT_LOADER__.register(CANCEL_LOGIN, 'CANCEL_LOGIN', '/Users/aaronjanke/webProjects/extension/background/aliases.js');
 
+	  __REACT_HOT_LOADER__.register(timer, 'timer', '/Users/aaronjanke/webProjects/extension/background/aliases.js');
+
 	  __REACT_HOT_LOADER__.register(loginAttempt, 'loginAttempt', '/Users/aaronjanke/webProjects/extension/background/aliases.js');
+
+	  __REACT_HOT_LOADER__.register(cancelLogin, 'cancelLogin', '/Users/aaronjanke/webProjects/extension/background/aliases.js');
 
 	  __REACT_HOT_LOADER__.register(beginLogin, 'beginLogin', '/Users/aaronjanke/webProjects/extension/background/aliases.js');
 

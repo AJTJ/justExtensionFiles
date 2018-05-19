@@ -25680,24 +25680,12 @@
 	    }
 
 	    _createClass(App, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
-
-	            document.addEventListener('click', function () {
-	                _this2.props.dispatch({
-	                    type: 'ADD_COUNT'
-	                });
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            _react2.default.createElement(
 	                'div',
 	                null,
-	                'Count: ',
-	                this.props.count
+	                'Hello'
 	            );
 	        }
 	    }]);
