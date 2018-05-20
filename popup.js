@@ -38821,8 +38821,12 @@
 	      scene.add(torusKnot);
 
 	      var light = new THREE.PointLight(0xff0000, 1, 100);
-	      light.position.set(0, 0, 20);
+	      light.position.set(0, 0, 50);
 	      scene.add(light);
+
+	      var lightStatic = new THREE.PointLight(0xff0000, 1, 100);
+	      lightStatic.position.set(0, 0, 20);
+	      scene.add(lightStatic);
 
 	      var ambientLight = new THREE.AmbientLight(0x404040, 7); // soft white light
 	      scene.add(ambientLight);
@@ -38833,7 +38837,7 @@
 	      // this.cube = cube
 	      this.torusKnot = torusKnot;
 
-	      camera.position.z = 50;
+	      camera.position.z = 60;
 
 	      this.mount.appendChild(this.renderer.domElement);
 	      this.start();
